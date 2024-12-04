@@ -53,18 +53,29 @@ const createWindow = () => {
         icon: path.resolve(__dirname, 'icon.png'),
         show: getValue('show-on-startup', true),
         webPreferences: {
-            contextIsolation: true,
-            devTools: true,
+            contextIsolation: false,
+            devTools: false,
             nodeIntegration: true,
             webviewTag: true,
+            webSecurity: false,
             preload: path.join(__dirname, 'src/preload.js')
         }
     });
 
     gemini.loadFile('src/index.html').catch(console.error);
 
+    gemini.webContents.setWindowOpenHandler(({ url }) => {
+        shell.openExternal(url).catch(console.error);
+        return { action: 'deny' };
+    });
+
     gemini.on('blur', () => {
         if (!getValue('always-on-top', false)) toggleVisibility(false);
+    });
+
+    gemini.webContents.on('new-window', (event, url) => {
+        event.preventDefault();
+        shell.openExternal(url);
     });
 
     ipcMain.handle('get-local-storage', (event, key) => getValue(key));

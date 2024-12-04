@@ -10,7 +10,12 @@
     <span class="drag"></span>
 </div>
 <div class="view">
-    <webview src="https://gemini.google.com/app"></webview>
+    <webview 
+        src="https://gemini.google.com/app"
+        preload="./preload.js"
+        nodeintegration
+        disablewebsecurity
+    ></webview>
 </div>
 </body>
 </html>
