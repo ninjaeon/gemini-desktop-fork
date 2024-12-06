@@ -47,7 +47,7 @@ jobs:
           build/*.tar.gz
           build/*.blockmap
           build/*.yml
-        draft: false
+        draft: true
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
