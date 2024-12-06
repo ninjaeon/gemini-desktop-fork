@@ -1,0 +1,32 @@
+name: Build and Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Electron app
+      run: npm run build
+
+    - name: Create release artifacts
+      uses: samuelmeuli/action-electron-builder@v1
+      with:
+        args: --mac --win --linux
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
