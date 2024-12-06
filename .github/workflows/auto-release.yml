@@ -30,9 +30,13 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
+    - name: Create and Upload GitHub Release
+      uses: softprops/action-gh-release@v2.1.0
+      if: startsWith(github.ref, 'refs/tags/')
       with:
+        tag_name: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
+        body: Release of version ${{ github.ref_name }}
         files: |
           build/*.exe
           build/*.AppImage
@@ -41,5 +45,7 @@ jobs:
           build/*.dmg
           build/*.zip
           build/*.tar.gz
+        draft: false
+        prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
