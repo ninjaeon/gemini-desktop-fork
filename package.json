@@ -1,6 +1,6 @@
 {
   "name": "gemini-desktop",
-  "version": "1.0.7-fork.1",
+  "version": "1.0.7-fork.2",
   "description": "A simple Gemini client using the Electron framework",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "electron-context-menu": "^4.0.4",
-    "electron-store": "^10.0.0"
+    "electron-store": "^10.0.0",
+    "electron-updater": "^6.3.9"
   },
   "build": {
     "appId": "gemini.neku.paw",
@@ -26,14 +27,28 @@
       "output": "build"
     },
     "win": {
-      "target": ["nsis", "zip"],
+      "target": [
+        "nsis",
+        "zip"
+      ],
       "icon": "icon.png"
     },
     "linux": {
-      "target": ["AppImage", "deb", "rpm"]
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ]
     },
     "mac": {
-      "target": ["dmg", "zip"]
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "draft"
     }
   }
 }

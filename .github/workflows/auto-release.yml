@@ -45,6 +45,8 @@ jobs:
           build/*.dmg
           build/*.zip
           build/*.tar.gz
+          build/*.blockmap
+          build/*.yml
         draft: false
         prerelease: false
       env:
