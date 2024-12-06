@@ -11,11 +11,12 @@
   "author": "@nekupaw",
   "license": "ISC",
   "devDependencies": {
+    "electron": "^33.2.1",
     "electron-builder": "^25.1.8",
-    "electron-winstaller": "^5.4.0",
-    "electron": "^33.2.1"
+    "electron-winstaller": "^5.4.0"
   },
   "dependencies": {
+    "electron-context-menu": "^4.0.4",
     "electron-store": "^10.0.0"
   },
   "build": {
