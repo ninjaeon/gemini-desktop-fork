@@ -8,6 +8,7 @@ This fork includes:
 - Updated Electron to version 33.3.0 based on Chromium 130.0.6723.152 (from Electron 32.1.2)
 - Fixed links to open in default external browser
 - Enabled Context Menu for copy/paste, Search with Google, copying links, etc.
+- Added "Check for Updates" button with manually-triggered autoupdater
 
 **⚠️ Security Notice**: Due to the automated nature of the modifications and lack of manual code review, this fork may contain security vulnerabilities or bugs. It is not recommended for production use.
 
