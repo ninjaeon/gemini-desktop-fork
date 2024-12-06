@@ -8,10 +8,7 @@
     "start": "electron .",
     "build": "electron-builder"
   },
-  "author": {
-    "name": "@nekupaw",
-    "email": "dev@ninjaeon.com"
-  },
+  "author": "@ninjaeon<dev@ninjaeon.com>",
   "license": "ISC",
   "devDependencies": {
     "electron": "^33.3.0",
