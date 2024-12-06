@@ -26,11 +26,14 @@
       "output": "build"
     },
     "win": {
-      "target": "nsis",
+      "target": ["nsis", "zip"],
       "icon": "icon.png"
     },
     "linux": {
-      "target": ["AppImage"]
+      "target": ["AppImage", "deb", "rpm"]
+    },
+    "mac": {
+      "target": ["dmg", "zip"]
     }
   }
 }
