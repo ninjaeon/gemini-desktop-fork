@@ -1,6 +1,6 @@
 {
   "name": "gemini-desktop",
-  "version": "1.0.7",
+  "version": "1.0.7-fork.1",
   "description": "A simple Gemini client using the Electron framework",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "@nekupaw",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^33.2.1",
+    "electron": "^33.3.0",
     "electron-builder": "^25.1.8",
     "electron-winstaller": "^5.4.0"
   },
