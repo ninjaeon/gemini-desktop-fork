@@ -20,8 +20,6 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
     *   Copying links
     *   Select All
 *   **Manual Update Checker:** Added a "Check for Updates" button in the system tray to manually trigger update checks.
-*   **Global Shortcut:** Access Gemini from anywhere with the shortcut `Ctrl + G` (configurable).
-*   **Startup Option:** Use the installer and copy the shortcut from the desktop to your startup folder for automatic launch.
 
 ## Release Notes (Latest: v1.0.7-fork.3)
 
