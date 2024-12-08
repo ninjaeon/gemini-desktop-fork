@@ -38,16 +38,15 @@ jobs:
         name: ${{ github.ref_name }}
         body: Release of version ${{ github.ref_name }}
         files: |
-          build/*Setup*.exe
-          build/*Setup*.exe.blockmap
+          build/Gemini-Desktop-Setup-*.exe
+          build/Gemini-Desktop-Setup-*.exe.blockmap
           build/latest.yml
-          build/*.AppImage
+          build/Gemini-Desktop-*.AppImage
           build/latest-linux.yml
-          build/*.deb
-          build/*.rpm
-          build/*.dmg
-          build/*-mac.zip
-          build/*-mac.zip.blockmap
+          build/gemini-desktop_*_amd64.deb
+          build/gemini-desktop-*.x86_64.rpm
+          build/Gemini-Desktop-*-arm64.dmg
+          build/Gemini-Desktop-*-arm64.dmg.blockmap
           build/latest-mac.yml
         draft: true
         prerelease: false
