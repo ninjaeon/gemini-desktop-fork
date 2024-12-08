@@ -12,7 +12,8 @@ This fork includes:
 
 **⚠️ Security Notice**: Due to the automated nature of the modifications and lack of manual code review, this fork may contain security vulnerabilities or bugs. It is not recommended for production use.
 
-(below is the original repository readme)
+Fork of the original Gemini Desktop Client by [nekupaw](https://github.com/nekupaw/gemini-desktop)
+(below is copied from the original repository README)
 
 # Google-Gemini Desktop Client (Electron)
 I've developed a straightforward desktop client for Google Gemini (formerly Bard) using the Electron framework.
