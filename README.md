@@ -5,7 +5,7 @@
 This is an enhanced, unofficial desktop client for Google Gemini, built upon the original [Gemini Desktop](https://github.com/nekupaw/gemini-desktop) by [nekupaw](https://github.com/nekupaw). This fork leverages the Electron framework to provide a cross-platform experience and introduces several improvements and new features.
 
 <p align="center">
-  <img src="screenshot.gif" alt="Gemini Desktop Demo" height="300">
+  <img src="screenshot.gif" alt="Gemini Desktop Demo" height="600">
 </p>
 
 **⚠️ Important Notes & Warnings:**
