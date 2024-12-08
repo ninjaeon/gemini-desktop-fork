@@ -38,15 +38,17 @@ jobs:
         name: ${{ github.ref_name }}
         body: Release of version ${{ github.ref_name }}
         files: |
-          build/*.exe
+          build/*Setup*.exe
+          build/*Setup*.exe.blockmap
+          build/latest.yml
           build/*.AppImage
+          build/latest-linux.yml
           build/*.deb
           build/*.rpm
           build/*.dmg
-          build/*.zip
-          build/*.tar.gz
-          build/*.blockmap
-          build/*.yml
+          build/*-mac.zip
+          build/*-mac.zip.blockmap
+          build/latest-mac.yml
         draft: true
         prerelease: false
       env:
