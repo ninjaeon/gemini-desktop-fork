@@ -8,9 +8,15 @@
     "start": "electron .",
     "build": "electron-builder"
   },
-  "author": "@nekupaw",
+  "author": {
+    "name": "@nekupaw",
+    "email": "nekupaw@users.noreply.github.com"
+  },
   "contributors": [
-    "@ninjaeon<dev@ninjaeon.com>"
+    {
+      "name": "@ninjaeon",
+      "email": "dev@ninjaeon.com"
+    }
   ],
   "license": "ISC",
   "devDependencies": {
@@ -41,7 +47,8 @@
         "AppImage",
         "deb",
         "rpm"
-      ]
+      ],
+      "maintainer": "dev@ninjaeon.com"
     },
     "mac": {
       "target": [
