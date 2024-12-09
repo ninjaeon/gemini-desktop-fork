@@ -1,4 +1,4 @@
-const { ipcRenderer, shell } = require('electron');
+const { ipcRenderer, shell, contextBridge, webFrame } = require('electron');
 
 // Handle window visibility
 ipcRenderer.on('toggle-visibility', (e, action) => {
@@ -7,25 +7,28 @@ ipcRenderer.on('toggle-visibility', (e, action) => {
 
 // Handle all link clicks
 document.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (link && link.href && link.href.startsWith('http')) {
+    const link = e.target.closest('a[href^="http"]');
+    if (link !== null) {
         e.preventDefault();
-        shell.openExternal(link.href).catch(console.error);
+        shell.openExternal(link.href).catch(() => {
+            // Handle error silently or show user-friendly message if needed
+        });
     }
 });
 
 // Intercept window.open calls
-window.open = (url) => {
-    if (url && url.startsWith('http')) {
-        shell.openExternal(url).catch(console.error);
+contextBridge.exposeInMainWorld('electron', {
+    openExternal: (url) => {
+        shell.openExternal(url).catch(() => {
+            // Handle error silently or show user-friendly message if needed
+        });
     }
-    return null;
-};
+});
 
 // Handle new window events
-window.addEventListener('new-window', (e) => {
-    e.preventDefault();
-    if (e.url && e.url.startsWith('http')) {
-        shell.openExternal(e.url).catch(console.error);
-    }
+webFrame.setWindowOpenHandler(({ url }) => {
+    shell.openExternal(url).catch(() => {
+        // Handle error silently or show user-friendly message if needed
+    });
+    return { action: 'deny' };
 });

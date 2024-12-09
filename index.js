@@ -1,5 +1,5 @@
 (async () => {
-    const { app, Tray, Menu, shell, BrowserWindow, globalShortcut, screen, ipcMain } = await import('electron');
+    const { app, Tray, Menu, shell, BrowserWindow, globalShortcut, screen, ipcMain, dialog } = await import('electron');
     const path = await import('path');
     const Store = (await import('electron-store')).default;
     const store = new Store();
@@ -11,23 +11,23 @@
 
     // Setup autoUpdater
     try {
-        console.log('AutoUpdater initialized.');
-        console.log('Setting up update event listeners...');
+        autoUpdater.setFeedURL({
+            provider: 'github',
+            owner: 'ninjaeon',
+            repo: 'gemini-desktop-fork',
+        });
+
         autoUpdater.on('error', (error) => {
-            console.error('AutoUpdater error:', error);
-            require('electron').dialog.showMessageBoxSync({
-                type: 'error',
-                buttons: ['OK'],
-                title: 'Update Error',
-                message: 'An error occurred while checking for updates. Please try again later.'
-            });
+            dialog.showErrorMessage('Error updating the app', error);
         });
+
         autoUpdater.on('checking-for-update', () => {
-            console.log('Checking for update...');
+            // Checking for updates
         });
+
         autoUpdater.autoDownload = false;
         autoUpdater.on('update-available', () => {
-            const response = require('electron').dialog.showMessageBoxSync({
+            const response = dialog.showMessageBoxSync({
                 type: 'info',
                 buttons: ['Update', 'Later'],
                 title: 'Update Available',
@@ -37,7 +37,7 @@
         });
 
         autoUpdater.on('update-downloaded', () => {
-            require('electron').dialog.showMessageBoxSync({
+            dialog.showMessageBoxSync({
                 type: 'info',
                 buttons: ['Restart'],
                 title: 'Update Ready',
@@ -47,7 +47,7 @@
         });
 
         autoUpdater.on('update-not-available', () => {
-            require('electron').dialog.showMessageBoxSync({
+            dialog.showMessageBoxSync({
                 type: 'info',
                 buttons: ['OK'],
                 title: 'No Updates',
@@ -55,10 +55,10 @@
             });
         });
     } catch (error) {
-        console.error('Error setting up autoUpdater:', error);
+        dialog.showErrorMessage('Error setting up autoUpdater', error);
     }
 
-    const exec = code => gemini.webContents.executeJavaScript(code).catch(console.error),
+    const exec = code => gemini.webContents.executeJavaScript(code),
         getValue = (key, defaultVal = false) => store.get(key, defaultVal);
 
     const toggleVisibility = action => {
@@ -114,10 +114,14 @@
             }
         });
 
-        gemini.loadFile('src/index.html').catch(console.error);
+        gemini.loadFile('src/index.html').catch(error => {
+            dialog.showErrorMessage('Error loading index.html', error);
+        });
 
         gemini.webContents.setWindowOpenHandler(({ url }) => {
-            shell.openExternal(url).catch(console.error);
+            shell.openExternal(url).catch(error => {
+                dialog.showErrorMessage('Error opening external URL', error);
+            });
             return { action: 'deny' };
         });
 
@@ -156,17 +160,16 @@
             const contextMenu = Menu.buildFromTemplate([
                 {
                     label: 'About (GitHub)',
-                    click: () => shell.openExternal('https://github.com/ninjaeon/gemini-desktop-fork').catch(console.error)
+                    click: () => shell.openExternal('https://github.com/nekupaw/gemini-desktop/').catch(error => {
+                        dialog.showErrorMessage('Error opening GitHub page', error);
+                    })
                 },
                 {
                     label: 'Check for Updates',
                     click: () => {
-                        try {
-                            console.log('Checking for updates...');
-                            autoUpdater.checkForUpdates();
-                        } catch (error) {
-                            console.error('Error checking for updates:', error);
-                        }
+                        autoUpdater.checkForUpdates().catch(error => {
+                            dialog.showErrorMessage('Error checking for updates', error);
+                        });
                     }
                 },
                 {type: 'separator'},
@@ -185,7 +188,9 @@
                                 preload: path.default.join(__dirname, 'components/setKeybindingsOverlay/preload.js')
                             }
                         });
-                        dialog.loadFile('components/setKeybindingsOverlay/index.html').catch(console.error);
+                        dialog.loadFile('components/setKeybindingsOverlay/index.html').catch(error => {
+                            dialog.showErrorMessage('Error loading setKeybindingsOverlay', error);
+                        });
                         dialog.show();
                     }
                 },
@@ -211,7 +216,7 @@
             tray.setContextMenu(contextMenu);
             tray.on('click', () => toggleVisibility(true));
         } catch (error) {
-            console.error('Error creating tray:', error);
+            dialog.showErrorMessage('Error creating tray', error);
         }
     };
 
@@ -221,7 +226,9 @@
             createWindow();
             registerKeybindings();
         } catch (error) {
-            console.error('Error during app initialization:', error);
+            dialog.showErrorMessage('Error during app initialization', error);
         }
-    }).catch(console.error);
+    }).catch(error => {
+        dialog.showErrorMessage('Error during app initialization', error);
+    });
 })();
