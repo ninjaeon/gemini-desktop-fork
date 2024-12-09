@@ -1,4 +1,3 @@
-```markdown
 # Gemini Desktop (Unofficial Enhanced Fork)
 
 [![GitHub release (with filter)](https://img.shields.io/github/v/release/ninjaeon/gemini-desktop-fork?include_prereleases)](https://github.com/ninjaeon/gemini-desktop-fork/releases)
@@ -75,4 +74,3 @@ This project is not affiliated with or endorsed by Google. It is an independent,
 ## Credits
 
 *   Original Gemini Desktop Client: [nekupaw](https://github.com/nekupaw/gemini-desktop)
-```
