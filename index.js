@@ -156,7 +156,7 @@
             const contextMenu = Menu.buildFromTemplate([
                 {
                     label: 'About (GitHub)',
-                    click: () => shell.openExternal('https://github.com/ninjaeon/gemini-desktop-fork').catch(console.error)
+                    click: () => shell.openExternal('https://github.com/nekupaw/gemini-desktop/').catch(console.error)
                 },
                 {
                     label: 'Check for Updates',
