@@ -12,12 +12,6 @@
     "name": "@nekupaw",
     "email": "nekupaw@users.noreply.github.com"
   },
-  "contributors": [
-    {
-      "name": "@ninjaeon",
-      "email": "dev@ninjaeon.com"
-    }
-  ],
   "license": "ISC",
   "devDependencies": {
     "electron": "^33.3.0",
@@ -48,7 +42,7 @@
         "deb",
         "rpm"
       ],
-      "maintainer": "dev@ninjaeon.com"
+      "maintainer": "nekupaw@users.noreply.github.com"
     },
     "mac": {
       "target": [
