@@ -13,8 +13,8 @@
     try {
         autoUpdater.setFeedURL({
             provider: 'github',
-            owner: 'ninjaeon',
-            repo: 'gemini-desktop-fork',
+            owner: 'nekupaw',
+            repo: 'gemini-desktop',
         });
 
         autoUpdater.on('error', (error) => {
