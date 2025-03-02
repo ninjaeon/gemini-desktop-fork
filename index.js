@@ -106,9 +106,49 @@
         }
     };
 
+    // Save window position
+    const saveWindowPosition = () => {
+        if (!gemini) return;
+        
+        const position = gemini.getPosition();
+        store.set('windowPosition', {
+            x: position[0],
+            y: position[1]
+        });
+    };
+
+    // Reset window position to default
+    const resetWindowPosition = () => {
+        if (!gemini) return;
+        
+        const {width, height} = screen.getPrimaryDisplay().bounds,
+            winWidth = 400, winHeight = 700;
+        
+        // Default position (right side of screen)
+        const defaultX = width - winWidth - 10;
+        const defaultY = height - winHeight - 60;
+        
+        // Set window position
+        gemini.setPosition(defaultX, defaultY);
+        
+        // Remove saved position
+        store.delete('windowPosition');
+        
+        // Show window if hidden
+        if (!visible) {
+            toggleVisibility(true);
+        }
+    };
+
     const createWindow = () => {
         const {width, height} = screen.getPrimaryDisplay().bounds,
             winWidth = 400, winHeight = 700;
+
+        // Get saved position or use default
+        const savedPosition = store.get('windowPosition', {
+            x: width - winWidth - 10,
+            y: height - winHeight - 60
+        });
 
         gemini = new BrowserWindow({
             width: winWidth,
@@ -120,8 +160,8 @@
             skipTaskbar: true,
             alwaysOnTop: true,
             transparent: true,
-            x: width - winWidth - 10,
-            y: height - winHeight - 60,
+            x: savedPosition.x,
+            y: savedPosition.y,
             icon: path.default.resolve(__dirname, 'icon.png'),
             show: getValue('show-on-startup', true),
             webPreferences: {
@@ -157,6 +197,12 @@
         gemini.on('blur', () => {
             if (!getValue('always-on-top', false)) toggleVisibility(false);
         });
+
+        // Save position when window is moved
+        gemini.on('moved', saveWindowPosition);
+
+        // Save position before window is closed
+        gemini.on('close', saveWindowPosition);
 
         ipcMain.handle('get-local-storage', (event, key) => getValue(key));
 
@@ -238,6 +284,10 @@
                         });
                         dialog.show();
                     }
+                },
+                {
+                    label: 'Reset Window Position',
+                    click: () => resetWindowPosition()
                 },
                 {
                     label: 'Always on Top',
