@@ -11,8 +11,10 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
 **⚠️ Important Notes & Warnings:**
 
 *   **Experimental AI-Generated Code:** This fork includes experimental, AI-generated code modifications that are **not yet manually reviewed**. Exercise caution and use at your own risk.
-*   **Untested Platforms:**  **Mac and Linux builds are currently untested.** Windows is the only verified working platform. Feedback and contributions for these platforms are highly encouraged!
-*   **Security Considerations:** The experimental nature and the absence of thorough code review might introduce security vulnerabilities or bugs. This version is **not recommended for production use** until further testing and validation.
+*   **Untested Platform:**  **Mac builds are currently untested.** Feedback for Mac builds are highly encouraged!
+*   **Security Considerations:** The experimental nature and the absence of thorough code review might introduce security vulnerabilities or bugs. This version is **not recommended for production use** until further testing and human validation of the code.
+*   **Unconfirmed Updater:** The automatic updater's functionality is currently unconfirmed due to recent changes. It will be fully tested in the next release.
+*   **Future Archival:** This fork is intended to be temporary. Once the features developed here are merged into the parent [Gemini Desktop](https://github.com/nekupaw/gemini-desktop) repository, this fork will be archived.
 
 ## Key Features & Enhancements (Over Original)
 
@@ -25,12 +27,16 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
     *   Select All
 *   **Manual Update Checker:** Added a "Check for Updates" button in the system tray to manually trigger update checks.
 
-## Release Notes (Latest: v1.0.7-fork.3)
+## Release Notes (Latest: v1.0.7-fork.4)
 
-*   **Keybinding Fix:** Resolved an issue where keybindings were not being set correctly. ([View changes on GitHub](https://github.com/ninjaeon/gemini-desktop-fork/compare/v1.0.7-fork.2...v1.0.7-fork.3))
+*   **Console Error Reporting Removed:** We've removed the console error reporting feature.
+*   **About Button Reverted:** The "About" button now correctly redirects to the original repository.
+*   **License Cleanup:** Removed the forker as a contributor in the project's license.
+*   **Unconfirmed Updater:** Due to changes made to remove error reporting, the updater's functionality is unconfirmed until the next release. ([View changes on GitHub](https://github.com/ninjaeon/gemini-desktop-fork/compare/v1.0.7-fork.3...v1.0.7-fork.4))
 
 **Previous Release Highlights:**
 
+*   **v1.0.7-fork.3:** Keybinding fix.
 *   **v1.0.7-fork.2:** Enhanced security by removing a web security attribute, added manual update checker.
 *   **v1.0.7-fork.1:** Electron upgrade, external link handling, context menu features.
 
@@ -38,23 +44,23 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
 
 **Windows:**
 
-1. Download `Gemini-Desktop-Setup-1.0.7-fork.3.exe` (installer) or `Gemini-Desktop-1.0.7-fork.3-win.zip` (portable).
+1. Download `Gemini-Desktop-Setup-1.0.7-fork.4.exe` (installer) or `Gemini-Desktop-1.0.7-fork.4-win.zip` (portable).
 2. Installer: Run the `.exe` file.
 3. Portable: Unzip and run `Gemini-Desktop.exe`.
 
 **macOS (Untested):**
 
-1. Download `Gemini-Desktop-1.0.7-fork.3-arm64.dmg` or `Gemini-Desktop-1.0.7-fork.3-arm64-mac.zip`.
+1. Download `Gemini-Desktop-1.0.7-fork.4-arm64.dmg` or `Gemini-Desktop-1.0.7-fork.4-arm64-mac.zip`.
 2. DMG: Open the `.dmg` and drag the app to your Applications folder.
 3. ZIP: Unzip and drag the app to your Applications folder.
 
-**Linux (Untested):**
+**Linux:**
 
 1. Download the appropriate file:
-    *   `Gemini-Desktop-1.0.7-fork.3.AppImage` (most distributions)
-    *   `gemini-desktop-1.0.7-fork.3.x86_64.rpm` (RPM-based)
-    *   `gemini-desktop_1.0.7-fork.3_amd64.deb` (Debian-based)
-2. If needed, make the file executable (e.g., `chmod +x Gemini-Desktop-1.0.7-fork.3.AppImage`).
+    *   `Gemini-Desktop-1.0.7-fork.4.AppImage` (most distributions)
+    *   `gemini-desktop-1.0.7-fork.4.x86_64.rpm` (RPM-based)
+    *   `gemini-desktop_1.0.7-fork.4_amd64.deb` (Debian-based)
+2. If needed, make the file executable (e.g., `chmod +x Gemini-Desktop-1.0.7-fork.4.AppImage`).
 3. Run the file.
 
 ## Contributing
