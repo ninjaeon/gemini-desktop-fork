@@ -333,7 +333,17 @@
             ]);
 
             tray.setContextMenu(contextMenu);
-            tray.on('click', () => toggleVisibility(true));
+            
+            // Update tray click behavior
+            tray.on('click', () => {
+                if (gemini.isVisible()) {
+                    // If window is already visible, close it (regardless of always-on-top setting)
+                    toggleVisibility(false);
+                } else {
+                    // If window is hidden, show it
+                    toggleVisibility(true);
+                }
+            });
         } catch (error) {
             dialog.showMessageBox({
                 type: 'error',
