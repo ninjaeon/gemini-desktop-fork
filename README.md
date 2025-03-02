@@ -18,26 +18,34 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
 
 ## Key Features & Enhancements (Over Original)
 
-*   **Updated Electron:** Upgraded to Electron v34.3.0 (Chromium 130.0.6723.152) for enhanced performance and security.
+*   **Updated Electron:** Upgraded to Electron v34.3.0 (Chromium 132.0.6834.210) for enhanced performance and security.
+*   **Enhanced User Interface and Window Management:**
+    *   **Resizable Window:**  Customize the application window size by dragging its edges.
+    *   **Drag to Move Window:** Reposition the window by dragging from the top bar.
+    *   **Improved Tray Icon Behavior:** Tray icon clicks now toggle window visibility for more intuitive control.
+    *   **Safe Window Positioning:** Ensures the window opens within screen boundaries on first launch and position reset.
+    *   **"Reset Window Position" Toggle:** Quickly restore the window to its default location via the system tray menu.
+    *   **Manual Update Checker:** Added a "Check for Updates" button in the system tray to manually trigger update checks.
+    *   **Context Menu:** Enabled a right-click context menu for enhanced functionality:
+        *   Copy/Paste (text and images)
+        *   Search with Google
+        *   Copying links
+        *   Select All
 *   **External Link Handling:** All links now open in your default external web browser, improving navigation and user experience.
-*   **Context Menu:** Enabled a right-click context menu for:
-    *   Copy/Paste (text and images)
-    *   Search with Google
-    *   Copying links
-    *   Select All
-*   **Manual Update Checker:** Added a "Check for Updates" button in the system tray to manually trigger update checks.
-*   **Improved Window Management:** Implemented safe window positioning logic and enhanced tray icon behavior for better user experience.
-*   **Updated Dependencies:** Upgraded electron-context-menu to v4.0.5 and electron-store to v10.0.1 for better performance and compatibility.
 
 ## Release Notes (Latest: v1.0.7-fork.5)
 
-*   **Improved Tray Icon Behavior:** Modified tray click handling to toggle window visibility instead of always showing the window.
-*   **Safe Window Positioning:** Implemented logic to ensure the window always appears within visible screen boundaries.
-*   **Updated Dependencies:**
-    *   Upgraded Electron to v34.3.0
-    *   Upgraded electron-context-menu to v4.0.5
-    *   Upgraded electron-store to v10.0.1
-*   **Linux Build Support:** Confirmed Linux build works on Debian 12.
+*   **Enhanced User Interface:** This release focuses on improving the user interface and overall user experience with several window management enhancements:
+    *   **Improved Tray Icon Behavior:** Tray icon clicks now toggle the main window's visibility for more intuitive control.
+    *   **Safe Window Positioning:** Ensures the application window opens within screen boundaries on first launch and after reset.
+    *   **Resizable Window:** Users can now resize the application window by dragging its edges.
+    *   **"Reset Window Position" Toggle:** Added a system tray menu toggle to quickly reset the window position.
+    *   **Drag to Move Window:** Implemented drag-and-drop functionality from the top bar to move the window.
+*   **Dependency Updates:**
+    *   Upgraded Electron to **v34.3.0**
+    *   Upgraded **electron-context-menu to v4.0.5**
+    *   Upgraded **electron-store to v10.0.1**
+
 *   ([View changes on GitHub](https://github.com/ninjaeon/gemini-desktop-fork/compare/v1.0.7-fork.4...v1.0.7-fork.5))
 
 **Previous Release Highlights:**
