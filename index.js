@@ -106,14 +106,32 @@
         }
     };
 
+    // Calculate a safe window position within screen bounds
+    const calculateSafeWindowPosition = (winWidth, winHeight) => {
+        const {width, height} = screen.getPrimaryDisplay().workArea;
+        
+        // Add padding to ensure window is fully visible
+        const padding = 10;
+        
+        // Calculate position to place window on right side with padding
+        const x = Math.max(padding, Math.min(width - winWidth - padding, width - winWidth - padding));
+        const y = Math.max(padding, Math.min(height - winHeight - padding, height - winHeight - padding));
+        
+        return { x, y };
+    };
+
     // Save window position
     const saveWindowPosition = () => {
         if (!gemini) return;
         
         const position = gemini.getPosition();
+        const size = gemini.getSize();
+        
         store.set('windowPosition', {
             x: position[0],
-            y: position[1]
+            y: position[1],
+            width: size[0],
+            height: size[1]
         });
     };
 
@@ -121,15 +139,14 @@
     const resetWindowPosition = () => {
         if (!gemini) return;
         
-        const {width, height} = screen.getPrimaryDisplay().bounds,
-            winWidth = 400, winHeight = 700;
+        const winWidth = 400, winHeight = 700;
         
-        // Default position (right side of screen)
-        const defaultX = width - winWidth - 10;
-        const defaultY = height - winHeight - 60;
+        // Get safe default position
+        const { x, y } = calculateSafeWindowPosition(winWidth, winHeight);
         
-        // Set window position
-        gemini.setPosition(defaultX, defaultY);
+        // Set window position and size
+        gemini.setPosition(x, y);
+        gemini.setSize(winWidth, winHeight);
         
         // Remove saved position
         store.delete('windowPosition');
@@ -141,22 +158,26 @@
     };
 
     const createWindow = () => {
-        const {width, height} = screen.getPrimaryDisplay().bounds,
-            winWidth = 400, winHeight = 700;
+        const winWidth = 400, winHeight = 700;
+        
+        // Get safe default position
+        const defaultPosition = calculateSafeWindowPosition(winWidth, winHeight);
 
         // Get saved position or use default
         const savedPosition = store.get('windowPosition', {
-            x: width - winWidth - 10,
-            y: height - winHeight - 60
+            x: defaultPosition.x,
+            y: defaultPosition.y,
+            width: winWidth,
+            height: winHeight
         });
 
         gemini = new BrowserWindow({
-            width: winWidth,
-            height: winHeight,
+            width: savedPosition.width || winWidth,
+            height: savedPosition.height || winHeight,
             frame: false,
             movable: true,
             maximizable: false,
-            resizable: false,
+            resizable: true,
             skipTaskbar: true,
             alwaysOnTop: true,
             transparent: true,
@@ -200,6 +221,9 @@
 
         // Save position when window is moved
         gemini.on('moved', saveWindowPosition);
+        
+        // Save size when window is resized
+        gemini.on('resize', saveWindowPosition);
 
         // Save position before window is closed
         gemini.on('close', saveWindowPosition);

@@ -22,6 +22,17 @@ body{
     z-index: 1000;
 }
 
+/* Add resize handle styles */
+.resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    cursor: nwse-resize;
+    z-index: 1000;
+}
+
 .view{
     border-radius: 8px;
     overflow: hidden;
@@ -29,6 +40,7 @@ body{
     background: white;
     opacity: 1;
     transform: scale(1);
+    position: relative; /* Add relative positioning for resize handle */
 
     webview{
         height: 100%; width: 100%;

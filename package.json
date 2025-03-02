@@ -14,13 +14,13 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "electron": "^33.3.0",
+    "electron": "^34.3.0",
     "electron-builder": "^25.1.8",
     "electron-winstaller": "^5.4.0"
   },
   "dependencies": {
-    "electron-context-menu": "^4.0.4",
-    "electron-store": "^10.0.0",
+    "electron-context-menu": "^4.0.5",
+    "electron-store": "^10.0.1",
     "electron-updater": "^6.3.9"
   },
   "build": {
