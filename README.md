@@ -18,7 +18,7 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
 
 ## Key Features & Enhancements (Over Original)
 
-*   **Updated Electron:** Upgraded to Electron v33.3.0 (Chromium 130.0.6723.152) for enhanced performance and security.
+*   **Updated Electron:** Upgraded to Electron v34.3.0 (Chromium 130.0.6723.152) for enhanced performance and security.
 *   **External Link Handling:** All links now open in your default external web browser, improving navigation and user experience.
 *   **Context Menu:** Enabled a right-click context menu for:
     *   Copy/Paste (text and images)
@@ -26,16 +26,23 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
     *   Copying links
     *   Select All
 *   **Manual Update Checker:** Added a "Check for Updates" button in the system tray to manually trigger update checks.
+*   **Improved Window Management:** Implemented safe window positioning logic and enhanced tray icon behavior for better user experience.
+*   **Updated Dependencies:** Upgraded electron-context-menu to v4.0.5 and electron-store to v10.0.1 for better performance and compatibility.
 
-## Release Notes (Latest: v1.0.7-fork.4)
+## Release Notes (Latest: v1.0.7-fork.5)
 
-*   **Console Error Reporting Removed:** We've removed the console error reporting feature.
-*   **About Button Reverted:** The "About" button now correctly redirects to the original repository.
-*   **License Cleanup:** Removed the forker as a contributor in the project's license.
-*   **Unconfirmed Updater:** Due to changes made to remove error reporting, the updater's functionality is unconfirmed until the next release. ([View changes on GitHub](https://github.com/ninjaeon/gemini-desktop-fork/compare/v1.0.7-fork.3...v1.0.7-fork.4))
+*   **Improved Tray Icon Behavior:** Modified tray click handling to toggle window visibility instead of always showing the window.
+*   **Safe Window Positioning:** Implemented logic to ensure the window always appears within visible screen boundaries.
+*   **Updated Dependencies:**
+    *   Upgraded Electron to v34.3.0
+    *   Upgraded electron-context-menu to v4.0.5
+    *   Upgraded electron-store to v10.0.1
+*   **Linux Build Support:** Confirmed Linux build works on Debian 12.
+*   ([View changes on GitHub](https://github.com/ninjaeon/gemini-desktop-fork/compare/v1.0.7-fork.4...v1.0.7-fork.5))
 
 **Previous Release Highlights:**
 
+*   **v1.0.7-fork.4:** Removed console error reporting, reverted about button to original repository, and cleaned up license.
 *   **v1.0.7-fork.3:** Keybinding fix.
 *   **v1.0.7-fork.2:** Enhanced security by removing a web security attribute, added manual update checker.
 *   **v1.0.7-fork.1:** Electron upgrade, external link handling, context menu features.
@@ -44,23 +51,23 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
 
 **Windows:**
 
-1. Download `Gemini-Desktop-Setup-1.0.7-fork.4.exe` (installer) or `Gemini-Desktop-1.0.7-fork.4-win.zip` (portable).
+1. Download `Gemini-Desktop-Setup-1.0.7-fork.5.exe` (installer) or `Gemini-Desktop-1.0.7-fork.5-win.zip` (portable).
 2. Installer: Run the `.exe` file.
 3. Portable: Unzip and run `Gemini-Desktop.exe`.
 
 **macOS (Untested):**
 
-1. Download `Gemini-Desktop-1.0.7-fork.4-arm64.dmg` or `Gemini-Desktop-1.0.7-fork.4-arm64-mac.zip`.
+1. Download `Gemini-Desktop-1.0.7-fork.5-arm64.dmg` or `Gemini-Desktop-1.0.7-fork.5-arm64-mac.zip`.
 2. DMG: Open the `.dmg` and drag the app to your Applications folder.
 3. ZIP: Unzip and drag the app to your Applications folder.
 
 **Linux:**
 
 1. Download the appropriate file:
-    *   `Gemini-Desktop-1.0.7-fork.4.AppImage` (most distributions)
-    *   `gemini-desktop-1.0.7-fork.4.x86_64.rpm` (RPM-based)
-    *   `gemini-desktop_1.0.7-fork.4_amd64.deb` (Debian-based)
-2. If needed, make the file executable (e.g., `chmod +x Gemini-Desktop-1.0.7-fork.4.AppImage`).
+    *   `Gemini-Desktop-1.0.7-fork.5.AppImage` (most distributions)
+    *   `gemini-desktop-1.0.7-fork.5.x86_64.rpm` (RPM-based)
+    *   `gemini-desktop_1.0.7-fork.5_amd64.deb` (Debian-based)
+2. If needed, make the file executable (e.g., `chmod +x Gemini-Desktop-1.0.7-fork.5.AppImage`).
 3. Run the file.
 
 ## Contributing
