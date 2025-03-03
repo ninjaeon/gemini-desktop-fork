@@ -13,7 +13,6 @@ This is an enhanced, unofficial desktop client for Google Gemini, built upon the
 *   **Experimental AI-Generated Code:** This fork includes experimental, AI-generated code modifications that are **not yet manually reviewed**. Exercise caution and use at your own risk.
 *   **Untested Platform:**  **Mac builds are currently untested.** Feedback for Mac builds are highly encouraged!
 *   **Security Considerations:** The experimental nature and the absence of thorough code review might introduce security vulnerabilities or bugs. This version is **not recommended for production use** until further testing and human validation of the code.
-*   **Unconfirmed Updater:** The automatic updater's functionality is currently unconfirmed due to recent changes. It will be fully tested in the next release.
 *   **Future Archival:** This fork is intended to be temporary. Once the features developed here are merged into the parent [Gemini Desktop](https://github.com/nekupaw/gemini-desktop) repository, this fork will be archived.
 
 ## Key Features & Enhancements (Over Original)
